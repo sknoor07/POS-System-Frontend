@@ -1,12 +1,13 @@
 
 import './App.css'
 import { Button } from './components/ui/button'
+import CreateOrder from './pages/cashier/CreateOrder'
 
 function App() {
   
   return (
-    <div>
-      <Button>Button</Button>
+    <div className="min-h-screen">
+      <CreateOrder />
     </div>
   )
 }
