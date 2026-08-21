@@ -8,7 +8,7 @@ import { Badge } from '@/components/ui/badge'
 
 const ProductCard = ({product}) => {
     return (
-        <div>
+        <div className='cursor-pointer hover:scale-105 transition-transform duration-300 ease-in-out'>
             <Card className="p-1">
                 <CardContent>
                     <div className='aspect-square bg-muted rounded-md mb-2 flex items-center justify-center flex flex-col space-y-2'>
