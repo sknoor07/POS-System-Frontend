@@ -1,5 +1,5 @@
 import { Input } from '@/components/ui/input'
-import { Button } from '@base-ui/react';
+import { Button } from '@/components/ui/button'
 import { Barcode, Search } from 'lucide-react';
 
 import { useEffect } from 'react';
@@ -18,7 +18,7 @@ const ProductSection = () => {
     image:"https://tse2.mm.bing.net/th/id/OIP.PF0zwgW8yCSuCtP15g54vgHaF7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
   },{
     id:2,
-    name:"ROG Phone 6D Ultimate",
+    name:" Phone 6D Ultimate",
     price:100,
     category:"retail",
     sku:"SKU123",
@@ -67,7 +67,7 @@ const ProductSection = () => {
 
         <div className='flex items-center justify-between p-4 '>
           <span>{results.length} Product Found</span>
-          <Button variant="outline" size="sm" className="text-xs">
+          <Button variant="outline" size="sm" className="text-xs cursor-pointer">
             <Barcode className='mr-2' />
             <span>Scan</span>
           </Button>
@@ -77,9 +77,9 @@ const ProductSection = () => {
       <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 p-4'>
         {
           results.length > 0 ? results.map((item)=>
-            <ProductCard key={item.id} product={item} />
+            <ProductCard key={item.id} product={item}  />
           ) : products.map((item)=>
-            <ProductCard key={item.id} product={item} />
+            <ProductCard key={item.id} product={item}  />
           )
         }
       </div>
