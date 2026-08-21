@@ -1,15 +1,17 @@
 import { Input } from '@/components/ui/input'
 import { Button } from '@base-ui/react';
-import { Barcode, Search } from 'lucide-react';
+import { Barcode } from 'lucide-react';
 
-import { useEffect } from 'react';
+import { Search } from 'lucide-react'
+
+import { useEffect, useMemo } from 'react';
 import { useState } from 'react';
 import ProductCard from './_components/ProductCard';
 
 const ProductSection = () => {
   const [search, setSearch] = useState("");
   const [results, setResults] = useState([]);
-  const products=[{
+  const products = useMemo(() => [{
     id:1,
     name:"ROG Phone 6D Ultimate",
     price:100,
@@ -37,21 +39,25 @@ const ProductSection = () => {
     category:"retail",
     sku:"SKU123",
     image:"https://tse2.mm.bing.net/th/id/OIP.PF0zwgW8yCSuCtP15g54vgHaF7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
-  }];
+  }], []);
 
   //Debouncing a search
   useEffect(() => {
     const timer = setTimeout(() => {
       if (search.trim() === "") {
-        setResults([]);
+        setResults(products);
         return;
       }
-      const filtered = products.filter(p => p.name.toLowerCase().includes(search.toLowerCase()));
-      setResults(filtered);
+
+      const searchResults = products.filter(product =>
+        product.name.toLowerCase().includes(search.toLowerCase()) ||
+        product.sku.toLowerCase().includes(search.toLowerCase())
+      );
+      setResults(searchResults);
       console.log("Searching for:", search);
     }, 500);
     return () => clearTimeout(timer);
-  }, [search]);
+  }, [search, products]);
 
   const handleSearch = (e) => {
     const searchTerm = e.target.value;
@@ -68,17 +74,15 @@ const ProductSection = () => {
         <div className='flex items-center justify-between p-4 '>
           <span>{results.length} Product Found</span>
           <Button variant="outline" size="sm" className="text-xs">
-            <Barcode className='mr-2' />
-            <span>Scan</span>
+            <Barcode />
+            Scan
           </Button>
         </div>
       </div>
 
       <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 p-4'>
         {
-          results.length > 0 ? results.map((item)=>
-            <ProductCard key={item.id} product={item} />
-          ) : products.map((item)=>
+          results.map((item)=>
             <ProductCard key={item.id} product={item} />
           )
         }

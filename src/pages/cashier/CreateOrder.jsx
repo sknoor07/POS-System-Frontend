@@ -1,3 +1,4 @@
+import React from 'react'
 import ProductSection from './ProductSection/ProductSection'
 import CartSection from './_components/CartSection'
 import CustomerPaymentSection from './_components/CustomerPaymentSection'
