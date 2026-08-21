@@ -1,12 +1,6 @@
-import React from 'react'
 import {
     Card,
-    CardAction,
     CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
 } from "@/components/ui/card"
 import { Badge } from '@/components/ui/badge'
 
@@ -15,7 +9,7 @@ import { Badge } from '@/components/ui/badge'
 const ProductCard = ({product}) => {
     return (
         <div>
-            <Card key={Math.random()} className="p-1">
+            <Card className="p-1">
                 <CardContent>
                     <div className='aspect-square bg-muted rounded-md mb-2 flex items-center justify-center flex flex-col space-y-2'>
                         <img src={product.image} alt={product.name} className='h-40 w-40 object-cover' />

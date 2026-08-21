@@ -190,7 +190,7 @@ export default function Search() {
                   <SearchItem key={item.id} item={item} />
                 ))}
                 {filteredItems.length === 0 && (
-                   <p className="text-center text-gray-400 dark:text-gray-500 py-4">No results found for &quot;{searchTerm}&quot;</p>
+                   <li className="text-center text-gray-400 dark:text-gray-500 py-4">No results found for &quot;{searchTerm}&quot;</li>
                 )}
               </ul>
             </div>

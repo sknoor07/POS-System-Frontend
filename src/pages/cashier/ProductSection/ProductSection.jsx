@@ -1,16 +1,14 @@
 import { Input } from '@/components/ui/input'
 import { Button } from '@base-ui/react';
-import { Barcode } from 'lucide-react';
+import { Barcode, Search } from 'lucide-react';
 
-import { Search } from 'lucide-react'
-
-import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
 import ProductCard from './_components/ProductCard';
 
 const ProductSection = () => {
   const [search, setSearch] = useState("");
+  const [results, setResults] = useState([]);
   const products=[{
     id:1,
     name:"ROG Phone 6D Ultimate",
@@ -19,21 +17,21 @@ const ProductSection = () => {
     sku:"SKU123",
     image:"https://tse2.mm.bing.net/th/id/OIP.PF0zwgW8yCSuCtP15g54vgHaF7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
   },{
-    id:1,
+    id:2,
     name:"ROG Phone 6D Ultimate",
     price:100,
     category:"retail",
     sku:"SKU123",
     image:"https://tse2.mm.bing.net/th/id/OIP.PF0zwgW8yCSuCtP15g54vgHaF7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
   },{
-    id:1,
+    id:3,
     name:"ROG Phone 6D Ultimate",
     price:100,
     category:"retail",
     sku:"SKU123",
     image:"https://tse2.mm.bing.net/th/id/OIP.PF0zwgW8yCSuCtP15g54vgHaF7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
   },{
-    id:1,
+    id:4,
     name:"ROG Phone 6D Ultimate",
     price:100,
     category:"retail",
@@ -48,7 +46,8 @@ const ProductSection = () => {
         setResults([]);
         return;
       }
-
+      const filtered = products.filter(p => p.name.toLowerCase().includes(search.toLowerCase()));
+      setResults(filtered);
       console.log("Searching for:", search);
     }, 500);
     return () => clearTimeout(timer);
@@ -67,17 +66,20 @@ const ProductSection = () => {
         </div>
 
         <div className='flex items-center justify-between p-4 '>
-          <span>{2} Product Found</span>
+          <span>{results.length} Product Found</span>
           <Button variant="outline" size="sm" className="text-xs">
-            <Barcode>Scan</Barcode>
+            <Barcode className='mr-2' />
+            <span>Scan</span>
           </Button>
         </div>
       </div>
 
       <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 p-4'>
         {
-          products.map((item,index)=>
-            <ProductCard key={index} product={item} />
+          results.length > 0 ? results.map((item)=>
+            <ProductCard key={item.id} product={item} />
+          ) : products.map((item)=>
+            <ProductCard key={item.id} product={item} />
           )
         }
       </div>

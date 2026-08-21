@@ -6,7 +6,7 @@ import CreateOrder from './pages/cashier/CreateOrder'
 function App() {
   
   return (
-    <div>
+    <div className="min-h-screen">
       <CreateOrder />
     </div>
   )
