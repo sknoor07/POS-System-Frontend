@@ -1,13 +1,14 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@base-ui/react'
 import { AlignCenter } from 'lucide-react'
+import React from 'react'
 
 const POSHeader = () => {
     return (
         <div className='bg-card border-b px-6 py-4'>
             <div className='flex items-center justify-between'>
                 <div>
-                    <Button aria-label="Toggle sidebar">
+                    <Button aria-label="Toggle menu">
                         <AlignCenter className='cursor-pointer' aria-hidden="true" />
                     </Button>
                 </div>

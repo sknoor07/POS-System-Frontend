@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Search as SearchIcon } from 'lucide-react';
 
 // --- SVG ICONS ---
