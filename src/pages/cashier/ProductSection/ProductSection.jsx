@@ -7,8 +7,6 @@ import { useState } from 'react';
 import ProductCard from './_components/ProductCard';
 
 const ProductSection = () => {
-  const [search, setSearch] = useState("");
-  const [results, setResults] = useState([]);
   const products=[{
     id:1,
     name:"ROG Phone 6D Ultimate",
@@ -38,15 +36,19 @@ const ProductSection = () => {
     sku:"SKU123",
     image:"https://tse2.mm.bing.net/th/id/OIP.PF0zwgW8yCSuCtP15g54vgHaF7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
   }];
+  const [search, setSearch] = useState("");
+  const [results, setResults] = useState([]);
+  
 
   //Debouncing a search
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (search.trim() === "") {
+      const normalizedSearch = search.trim().toLowerCase()
+      if (normalizedSearch === "") {
         setResults([]);
         return;
       }
-      const filtered = products.filter(p => p.name.toLowerCase().includes(search.toLowerCase()));
+      const filtered = products.filter(p => p.name.toLowerCase().includes(normalizedSearch));
       setResults(filtered);
       console.log("Searching for:", search);
     }, 500);
