@@ -1,6 +1,8 @@
 import { Input } from '@/components/ui/input'
 import { Button } from '@base-ui/react';
 import { Barcode } from 'lucide-react';
+import { Button } from '@/components/ui/button'
+import { Barcode, Search } from 'lucide-react';
 
 import { Search } from 'lucide-react'
 
@@ -12,6 +14,7 @@ const ProductSection = () => {
   const [search, setSearch] = useState("");
   const [results, setResults] = useState([]);
   const products = useMemo(() => [{
+  const products=[{
     id:1,
     name:"ROG Phone 6D Ultimate",
     price:100,
@@ -20,7 +23,7 @@ const ProductSection = () => {
     image:"https://tse2.mm.bing.net/th/id/OIP.PF0zwgW8yCSuCtP15g54vgHaF7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
   },{
     id:2,
-    name:"ROG Phone 6D Ultimate",
+    name:" Phone 6D Ultimate",
     price:100,
     category:"retail",
     sku:"SKU123",
@@ -40,6 +43,10 @@ const ProductSection = () => {
     sku:"SKU123",
     image:"https://tse2.mm.bing.net/th/id/OIP.PF0zwgW8yCSuCtP15g54vgHaF7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
   }], []);
+  }];
+  const [search, setSearch] = useState("");
+  const [results, setResults] = useState([]);
+  
 
   //Debouncing a search
   useEffect(() => {
@@ -54,6 +61,13 @@ const ProductSection = () => {
         product.sku.toLowerCase().includes(search.toLowerCase())
       );
       setResults(searchResults);
+      const normalizedSearch = search.trim().toLowerCase()
+      if (normalizedSearch === "") {
+        setResults([]);
+        return;
+      }
+      const filtered = products.filter(p => p.name.toLowerCase().includes(normalizedSearch));
+      setResults(filtered);
       console.log("Searching for:", search);
     }, 500);
     return () => clearTimeout(timer);
@@ -76,6 +90,9 @@ const ProductSection = () => {
           <Button variant="outline" size="sm" className="text-xs">
             <Barcode />
             Scan
+          <Button variant="outline" size="sm" className="text-xs cursor-pointer">
+            <Barcode className='mr-2' />
+            <span>Scan</span>
           </Button>
         </div>
       </div>
@@ -84,6 +101,10 @@ const ProductSection = () => {
         {
           results.map((item)=>
             <ProductCard key={item.id} product={item} />
+          results.length > 0 ? results.map((item)=>
+            <ProductCard key={item.id} product={item}  />
+          ) : products.map((item)=>
+            <ProductCard key={item.id} product={item}  />
           )
         }
       </div>

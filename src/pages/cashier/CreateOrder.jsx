@@ -1,6 +1,6 @@
 import React from 'react'
 import ProductSection from './ProductSection/ProductSection'
-import CartSection from './_components/CartSection'
+import CartSection from './CartSection/CartSection'
 import CustomerPaymentSection from './_components/CustomerPaymentSection'
 import POSHeader from './Header.jsx/POSHeader'
 
