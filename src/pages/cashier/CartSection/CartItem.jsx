@@ -7,6 +7,7 @@ import React from 'react'
 
 const CartItem = ({ send }) => {
     return (
+        <div className='hover:scale-105 transition-transform duration-300 ease-in-out'>
         <Card className='border-l-4 border-l-gray-500 '>
             <CardContent className="p-3">
                 <div className="flex items-center justify-between">
@@ -37,6 +38,7 @@ const CartItem = ({ send }) => {
                 </div>
             </CardContent>
         </Card>
+        </div>
     )
 }
 
