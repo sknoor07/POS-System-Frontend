@@ -2,7 +2,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { CircleUserIcon } from 'lucide-react';
 import { User2 } from 'lucide-react'
-import React from 'react'
 import { useState } from 'react';
 import CustomerDialog from './CustomerDialog';
 

@@ -2,7 +2,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input'
 import { BadgePercent } from 'lucide-react';
 
-import { User2 } from 'lucide-react'
 import React from 'react'
 
 const DiscountSection = () => {

@@ -1,4 +1,3 @@
-import React from 'react'
 import CustomerSection from './_component/CustomerSection'
 import DiscountSection from './_component/DiscountSection'
 import NoteSection from './_component/NoteSection'

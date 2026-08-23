@@ -1,7 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { PauseIcon } from 'lucide-react';
 import { CreditCardIcon } from 'lucide-react'
-import React from 'react'
 import { useState } from 'react';
 import PaymentDialog from './PaymentDialog';
 

@@ -1,6 +1,4 @@
-import { Input } from '@base-ui/react'
 import { FileText } from 'lucide-react'
-import React from 'react'
 import { useState } from 'react'
 
 const NoteSection = () => {

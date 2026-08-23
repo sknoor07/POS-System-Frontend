@@ -39,6 +39,7 @@ const ProductSection = () => {
   
   const [search, setSearch] = useState("");
   const [results, setResults] = useState([]);
+  const isSearchBlank = search.trim() === "";
   
 
   //Debouncing a search
@@ -82,9 +83,9 @@ const ProductSection = () => {
 
       <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 p-4'>
         {
-          results.length > 0 ? results.map((item)=>
+          isSearchBlank ? products.map((item)=
             <ProductCard key={item.id} product={item}  />
-          ) : products.map((item)=>
+          ) : results.map((item)=
             <ProductCard key={item.id} product={item}  />
           )
         }

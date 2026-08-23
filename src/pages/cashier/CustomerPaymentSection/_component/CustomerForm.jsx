@@ -1,7 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogHeader } from '@/components/ui/dialog'
 import { Form, Formik } from 'formik'
-import React from 'react'
 
 const CustomerForm = ({showCustomerForm,setShowCustomerForm}) => {
     const initialValues = {
@@ -22,13 +21,13 @@ const CustomerForm = ({showCustomerForm,setShowCustomerForm}) => {
                     values, 
                     handleChange,
                     handleBlur,
-                    handleSubmit,
                     /* and other goodies */
                 }) => (
                     <Form className=' flex flex-col gap-5'>
                         <input
                             type="text"
                             placeholder="Enter Full Name"
+                            name="fullName"
                             onChange={handleChange}
                             onBlur={handleBlur}
                             value={values.fullName}
@@ -37,6 +36,7 @@ const CustomerForm = ({showCustomerForm,setShowCustomerForm}) => {
                         <input
                             type="email"
                             placeholder=' Enter Email'
+                            name="email"
                             onChange={handleChange}
                             onBlur={handleBlur}
                             value={values.email}
@@ -45,6 +45,7 @@ const CustomerForm = ({showCustomerForm,setShowCustomerForm}) => {
                         <input
                             type="text"
                             placeholder="Enter Phone Number"
+                            name="phone"
                             onChange={handleChange}
                             onBlur={handleBlur}
                             value={values.phone}
