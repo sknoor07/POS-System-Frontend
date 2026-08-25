@@ -2,43 +2,10 @@ import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import { customers } from '@/data/customers'
 import { useState } from 'react'
 import CustomerForm from './CustomerForm'
 import { useEffect } from 'react'
-const customers = [{
-    id: 1,
-    fullName: "John Sina",
-    phone: "754345223",
-    email: "john@gmail.com",
-}, {
-    id: 2,
-    fullName: "Rick",
-    phone: "8972357723",
-    email: "rick@gmail.com",
-}, {
-    id: 3,
-    fullName: "Morty",
-    phone: "353424356",
-    email: "morty@gmail.com",
-}, {
-    id: 4,
-    fullName: "Shawn",
-    phone: "3432523457",
-    email: "shawn@gmail.com",
-},
-{
-    id: 5,
-    fullName: "Alice",
-    phone: "7234234777",
-    email: "alice@gmail.com",
-},
-{
-    id: 6,
-    fullName: "Alice",
-    phone: "7234234777",
-    email: "alice@gmail.com",
-}
-];
 
 const CustomerDialog = ({ showCustomerDialog, setShowCustomerDialog, setSelectedCustomer }) => {
 
